@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,8 @@ import { PreseleccionComponent } from './preseleccion/preseleccion.component';
 import { SeleccionComponent } from './seleccion/seleccion.component';
 import { AdmisibilidadComponent } from './admisibilidad/admisibilidad.component';
 import { TablaProyectoComponent } from './tabla-proyecto/tabla-proyecto.component';
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { AgregarConcursoComponent } from "./agregar-concurso/agregar-concurso.component";
 
 const appRoutes: Routes = [
   { path: '', component: InicioComponent },
@@ -33,19 +36,23 @@ const appRoutes: Routes = [
   { path: 'preseleccion', component: PreseleccionComponent},
   { path: 'seleccion', component: SeleccionComponent},
   { path: 'admisibilidad', component: AdmisibilidadComponent},
-  { path: 'tabla-proyecto', component: TablaProyectoComponent}
+  { path: 'tabla-proyecto', component: TablaProyectoComponent},
+  { path: "agregar-concurso", component: AgregarConcursoComponent }
 ];
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true}// <-- debugging purposes only
-    )
+      { enableTracing: true } // <-- debugging purposes only
+    ),
+    NoopAnimationsModule
   ],
   declarations: [
     AppComponent,
@@ -62,9 +69,10 @@ const appRoutes: Routes = [
     PreseleccionComponent,
     SeleccionComponent,
     AdmisibilidadComponent,
-    TablaProyectoComponent
+    TablaProyectoComponent,
+    AgregarConcursoComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, AgregarConcursoComponent]
 })
-export class AppModule { }
+export class AppModule {}
