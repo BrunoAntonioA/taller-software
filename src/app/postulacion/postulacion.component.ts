@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ConcursoService} from '../shared/concurso/concurso.service';
 @Component({
   selector: 'app-postulacion',
   templateUrl: './postulacion.component.html',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostulacionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private concursoService : ConcursoService) {
+
+   }
 
   ngOnInit() {
+    this.concursoService.seleccionado = false;
   }
+  
+  selectConcurso(){
+    console.log('entra al método select concurso de concursos component');
+    if(this.concursoService.seleccionado == true){
+      this.concursoService.seleccionado = false;
+    }else{
+      this.concursoService.seleccionado = true;
+    }
 
+  }
 }

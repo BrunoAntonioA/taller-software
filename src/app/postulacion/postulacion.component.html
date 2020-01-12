@@ -1,1 +1,68 @@
-<h1>COMPONENTE DE POSTULACIONES</h1>
+
+<div *ngIf="this.concursoService.seleccionado;else qwerty">
+    <h1>IDENTIFICACION DEL PROYECTO</h1>
+    <form>
+        <div class="form-group">
+        <label for="tipoproyecto">Tipo de Proyecto: DIE - Desarrolla y Valida.</label>
+        <div>
+            <label for="tiempoejecucion">Tiempo de ejecucion: 8</label>
+        </div>
+        </div>
+        <div class="form-group">
+        <label for="nombreproyecto">Nombre Proyecto</label>
+        <input type="name" class="form-control" id="nombreproyecto" placeholder="QWERTY">
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">NOMBRE COMPLETO</th>
+            <th scope="col">N°RUT</th>
+            <th scope="col">UNIDAD ACADEMICA</th>
+            <th scope="col">E-MAIL</th>
+            <th scope="col">N° CELULAR</th>
+            <th scope="col">N° ANEXO</th>
+            <th scope="col">DIRECTOR PROYECTO</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Testing guy</td>
+            <td>11111111-x</td>
+            <td>asd@gmail.com</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+  <!-- esto se muestra si no ha seleccionado concurso  -->
+  <ng-template #qwerty>
+    <div class="card-body table-full-width table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha de creación</th>
+                <th>Estado</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                      <a>
+                        Concurso Corfo Innova 2030
+                      </a>
+                    </td>
+                    <td>20-01-2020</td>
+                    <td>Vigente</td>
+                    <td>
+                        <button (click)="selectConcurso()" type="button" class="btn btn-info">Seleccionar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </ng-template>
