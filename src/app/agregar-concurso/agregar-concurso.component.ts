@@ -13,21 +13,24 @@ export class AgregarConcursoComponent implements OnInit {
   concursos = [];
 
   onClick() {
-    this.concursos.push({
-      nombre: this.nombre,
-      fechaInicio: this.fechaInicio
-        .split("-")
-        .reverse()
-        .join("/"),
-      fechaTermino: this.fechaTermino
-        .split("-")
-        .reverse()
-        .join("/")
-    });
-
-    this.nombre = "";
-    this.fechaInicio = "";
-    this.fechaTermino = "";
+    if (this.nombre && this.fechaInicio && this.fechaTermino) {
+      this.concursos.push({
+        nombre: this.nombre,
+        fechaInicio: this.fechaInicio
+          .split("-")
+          .reverse()
+          .join("/"),
+        fechaTermino: this.fechaTermino
+          .split("-")
+          .reverse()
+          .join("/")
+      });
+      this.nombre = "";
+      this.fechaInicio = "";
+      this.fechaTermino = "";
+    } else {
+      alert("Debes rellenar todos los campos!");
+    }
   }
   ngOnInit() {}
 }
