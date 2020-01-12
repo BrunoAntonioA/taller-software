@@ -14,9 +14,8 @@ export class PostulacionComponent implements OnInit {
   ngOnInit() {
     this.concursoService.seleccionado = false;
   }
-  
+
   selectConcurso(){
-    console.log('entra al método select concurso de concursos component');
     if(this.concursoService.seleccionado == true){
       this.concursoService.seleccionado = false;
     }else{
