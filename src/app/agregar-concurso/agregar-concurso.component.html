@@ -1,0 +1,53 @@
+<div>
+  <h2>Agregar concurso</h2>
+
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <div class="input-group separate-form-control">
+        <label for="nombre">Nombre del concurso</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre del concurso"
+          [(ngModel)]="nombre"
+        />
+        <br />
+        <label for="fechaInicio">Fecha de inicio</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="Fecha de inicio"
+          [(ngModel)]="fechaInicio"
+        />
+        <br />
+        <label for="fechaTermino">Fecha de termino</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="Fecha de termino"
+          [(ngModel)]="fechaTermino"
+        />
+
+        <div class="">
+          <button
+            class="btn btn-primary btn-shrinked"
+            type="button"
+            (click)="onClick()"
+          >
+            <span class="">Agregar Concurso</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <ul class="list-group">
+    <li *ngFor="let concurso of concursos" class="list-group-item">
+      <p>Nombre del concurso: {{ concurso.nombre }}</p>
+      <p>Fecha de inicio: {{ concurso.fechaInicio }}</p>
+      <p>Fecha de finalización: {{ concurso.fechaTermino }}</p>
+    </li>
+  </ul>
+</div>
