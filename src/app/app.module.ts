@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { PreseleccionComponent } from './preseleccion/preseleccion.component';
 import { SeleccionComponent } from './seleccion/seleccion.component';
+import { AdmisibilidadComponent } from './admisibilidad/admisibilidad.component';
+import { TablaProyectoComponent } from './tabla-proyecto/tabla-proyecto.component';
 
 const appRoutes: Routes = [
   { path: '', component: InicioComponent },
@@ -28,7 +31,9 @@ const appRoutes: Routes = [
   { path: 'estadisticas', component: EstadisticasComponent},
   { path: 'inicio', component: InicioComponent},
   { path: 'preseleccion', component: PreseleccionComponent},
-  { path: 'seleccion', component: SeleccionComponent}
+  { path: 'seleccion', component: SeleccionComponent},
+  { path: 'admisibilidad', component: AdmisibilidadComponent},
+  { path: 'tabla-proyecto', component: TablaProyectoComponent}
 ];
 
 @NgModule({
@@ -36,6 +41,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true}// <-- debugging purposes only
@@ -54,7 +60,9 @@ const appRoutes: Routes = [
     EstadisticasComponent,
     InicioComponent,
     PreseleccionComponent,
-    SeleccionComponent
+    SeleccionComponent,
+    AdmisibilidadComponent,
+    TablaProyectoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

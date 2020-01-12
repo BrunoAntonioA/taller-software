@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Concurso } from '../concurso';
+
+import { ConcursoService } from '../shared/concurso/concurso.service';
 
 @Component({
   selector: 'app-concursos',
@@ -8,11 +9,22 @@ import { Concurso } from '../concurso';
 })
 export class ConcursosComponent implements OnInit {
 
-  constructor(
-    public concursos:Array<Concurso> 
-  ){ }
+  constructor(private concursoService: ConcursoService){}
 
   ngOnInit() {
+
+    this.concursoService.seleccionado = false;
+
+  }
+
+  selectConcurso(){
+    console.log('entra al método select concurso de concursos component');
+    if(this.concursoService.seleccionado == true){
+      this.concursoService.seleccionado = false;
+    }else{
+      this.concursoService.seleccionado = true;
+    }
+
   }
 
 }
