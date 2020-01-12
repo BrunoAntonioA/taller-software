@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanzasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private hola: string) { }
 
   ngOnInit() {
   }
