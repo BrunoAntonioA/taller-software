@@ -1,4 +1,4 @@
-
+    
 <div *ngIf="this.concursoService.seleccionado;else qwerty">
     <h1>IDENTIFICACION DEL PROYECTO</h1>
     <form>
@@ -9,44 +9,96 @@
         </div>
         </div>
         <div class="form-group">
-        <label for="nombreproyecto">Nombre Proyecto</label>
-        <input type="name" class="form-control" id="nombreproyecto" placeholder="QWERTY"[(ngModel)]="nombre">
+          <label for="nombreproyecto">Nombre Proyecto</label>
+          <input type="name" class="form-control" id="nombreproyecto" placeholder="Escriba el nombre de proyecto"[(ngModel)]="nombre">
+          <label for="director_proyecto">Director Proyecto</label>
+          <input type="director_proyecto" class="form-control" id="director_proyecto" placeholder=""[(ngModel)]="director">
+        
+
         </div>
     </form>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Agregar postulante
+    </button>
+
+
 
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">NOMBRE COMPLETO</th>
             <th scope="col">N°RUT</th>
             <th scope="col">UNIDAD ACADEMICA</th>
             <th scope="col">E-MAIL</th>
             <th scope="col">N° CELULAR</th>
             <th scope="col">N° ANEXO</th>
-            <th scope="col">DIRECTOR PROYECTO</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Testing guy</td>
-            <td>11111111-x</td>
-            <td>asd@gmail.com</td>
+        <tr *ngFor="let field of fieldArray; let i = index">
+          <td>
+              <input [(ngModel)]="field.nombre" class="form-control" type="text" name="{{field.nombre}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="field.rut" class="form-control" type="text" name="{{field.rut}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="field.unidad_academica" class="form-control" type="text" name="{{field.unidad_academica}}" />
+            </td>
+            <td>
+              <input [(ngModel)]="field.email" class="form-control" type="text" name="{{field.email}}" />
+            </td>
+            <td>
+              <input [(ngModel)]="field.celular" class="form-control" type="text" name="{{field.celular}}" />
+            </td>
+            <td>
+              <input [(ngModel)]="field.anexo" class="form-control" type="text" name="{{field.anexo}}" />
+            </td>
+            <td>
+              <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Eliminar</button>
+          </td>
         </tr>
         </tbody>
     </table>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Agregar postulante
-  </button>
-  
+
+
+    <div class="center">
+      <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+      (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+          <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+            Arrastre los archivos aqui
+          </ng-template>
+      </ngx-file-drop>
+      <div class="upload-table">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>Archivos</th>
+                  </tr>
+              </thead>
+              <tbody class="upload-name-style">
+                  <tr *ngFor="let item of files; let i=index">
+                      <td><strong>{{ item.relativePath }}</strong></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+
+    
+
+
+<!-- -->
+  <div class="text-right mb-3">
+    <button type="button" (click)="addFieldValue()" class="btn btn-success">Terminar postulacion</button>
+  </div>
+
   <!-- Modal -->
-  <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Agregar postulante</h5>
+          <h2 class="modal-title" id="exampleModalLongTitle">Agregar postulante</h2>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -54,18 +106,32 @@
         <div class="modal-body">
             <form>
                 <div class="form-group">
-                <label for="nombreproyecto">Nombre Proyecto</label>
-                <input type="name" class="form-control" id="nombreproyecto" placeholder="QWERTY"[(ngModel)]="nombre">
+                <label for="nombreproyecto">Nombre Postulante</label>
+                <input type="text" class="form-control" id="newAttributeNombre" name="newAttributeNombre" [(ngModel)]="newAttribute.nombre">
+                <label for="rut">N° RUT</label>
+                <input type="text" class="form-control" id="newAttributeRut" name="newAttributeRut" [(ngModel)]="newAttribute.rut">
+                <label for="unidad_academica">Unidad academica</label>
+                <input type="text" class="form-control" id="newAttributeUnidadAcademica" name="newAttributeUnidadAcademica" [(ngModel)]="newAttribute.unidad_academica">
+                <label for="email">E-MAIL</label>
+                <input type="text" class="form-control" id="newAttributeEmail" name="newAttributeEmail" [(ngModel)]="newAttribute.email">
+                <label for="celular">Celular</label>
+                <input type="text" class="form-control" id="newAttributeCelular" name="newAttributeCelular" [(ngModel)]="newAttribute.celular">
+                <label for="n_anexo">N° Anexo</label>
+                <input type="text" class="form-control" id="newAttributeAnexo" name="newAttributeAnexo" [(ngModel)]="newAttribute.anexo">
+
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="addFieldValue()" data-dismiss="modal" class="btn btn-primary">Agregar</button>
         </div>
       </div>
     </div>
 
+
+
+    
 
   </div>
 
