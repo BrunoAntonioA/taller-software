@@ -39,7 +39,7 @@ const appRoutes: Routes = [
   { path: 'seleccion', component: SeleccionComponent},
   { path: 'admisibilidad', component: AdmisibilidadComponent},
   { path: 'tabla-proyecto', component: TablaProyectoComponent},
-  { path: "agregar-concurso", component: AgregarConcursoComponent }
+  { path: "agregar-concurso", component: AgregarConcursoComponent}
 ];
 
 @NgModule({
