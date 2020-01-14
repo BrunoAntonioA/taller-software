@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ConcursoService } from '../shared/concurso/concurso.service';
+
 
 @Component({
   selector: 'app-admisibilidad',
@@ -8,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmisibilidadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private concursoService : ConcursoService) { }
 
   ngOnInit() {
   }
 
+  
 }

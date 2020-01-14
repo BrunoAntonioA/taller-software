@@ -44,8 +44,6 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    BrowserModule,
-    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(
@@ -73,6 +71,6 @@ const appRoutes: Routes = [
     AgregarConcursoComponent
   ],
   providers: [],
-  bootstrap: [AppComponent, AgregarConcursoComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

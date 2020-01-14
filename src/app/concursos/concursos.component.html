@@ -15,15 +15,15 @@
                         <th>Estado</th>
                         <th></th>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
+                    <tbody >
+                        <tr *ngFor="let concurso of concursoService.concursos">
+                            <td>{{concurso._id}}</td>
                             <td>
                               <a>
-                                Concurso Corfo Innova 2030
+                                {{concurso.nombre}}
                               </a>
                             </td>
-                            <td>20-01-2020</td>
+                            <td>{{concurso.fecha_inicio}}</td>
                             <td>Vigente</td>
                             <td>
                                 <button (click)="selectConcurso()">seleccionar</button> 
@@ -34,7 +34,10 @@
             </div>
         </div>
         <div class="card-body">
-            <app-agregar-concurso></app-agregar-concurso>
+            <!--
+
+                <app-agregar-concurso></app-agregar-concurso>
+            -->
         </div>
     </div>
 

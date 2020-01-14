@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ConcursoService } from '../shared/concurso/concurso.service';
+import { Concurso } from '../shared/concurso/concurso.model';
 
 @Component({
   selector: 'app-concursos',
   templateUrl: './concursos.component.html',
-  styleUrls: ['./concursos.component.css']
+  styleUrls: ['./concursos.component.css'],
+  providers: [ConcursoService]
 })
 export class ConcursosComponent implements OnInit {
 
@@ -13,8 +15,20 @@ export class ConcursosComponent implements OnInit {
 
   ngOnInit() {
 
-    this.concursoService.seleccionado = false;
+    this.concursoService.seleccionado = true;
+    this.refreshConcursoList();
 
+  }
+
+  refreshConcursoList(){
+
+    this.concursoService.concursos = [];
+    this.concursoService.getConcursoList().subscribe((res) => {
+
+      this.concursoService.concursos = res as Concurso[];
+      console.log(res);
+    });
+    
   }
 
   selectConcurso(){
