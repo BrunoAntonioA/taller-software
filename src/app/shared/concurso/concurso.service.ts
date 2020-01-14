@@ -14,6 +14,7 @@ import { Concurso } from './concurso.model';
 
 export class ConcursoService {
 
+  agregar: Boolean;
   seleccionado: Boolean;
   concursoForm: Boolean;
   selectedConcurso: Concurso;

@@ -20,7 +20,7 @@ export class ConcursosComponent implements OnInit {
   constructor(private concursoService: ConcursoService, private proyectoService: ProyectoService){}
 
   ngOnInit() {
-
+    this.concursoService.agregar = false;
     this.concursoService.seleccionado = true;
     this.proyectoService.seleccionado = false;
     this.refreshConcursoList();
@@ -36,6 +36,15 @@ export class ConcursosComponent implements OnInit {
       console.log(res);
     });
     
+  }
+
+  agregarConcurso(){
+    console.log('entra al método select concurso de concursos component');
+    if(this.concursoService.agregar == true){
+      this.concursoService.agregar = false;
+    }else{
+      this.concursoService.agregar = true;
+    }
   }
 
   selectProyecto(){
