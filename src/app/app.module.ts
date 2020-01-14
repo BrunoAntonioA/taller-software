@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +22,10 @@ import { SeleccionComponent } from './seleccion/seleccion.component';
 import { AdmisibilidadComponent } from './admisibilidad/admisibilidad.component';
 import { TablaProyectoComponent } from './tabla-proyecto/tabla-proyecto.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { AgregarConcursoComponent } from "./agregar-concurso/agregar-concurso.component";
+
+
 const appRoutes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'postulacion', component: PostulacionComponent },
@@ -33,7 +38,8 @@ const appRoutes: Routes = [
   { path: 'preseleccion', component: PreseleccionComponent},
   { path: 'seleccion', component: SeleccionComponent},
   { path: 'admisibilidad', component: AdmisibilidadComponent},
-  { path: 'tabla-proyecto', component: TablaProyectoComponent}
+  { path: 'tabla-proyecto', component: TablaProyectoComponent},
+  { path: "agregar-concurso", component: AgregarConcursoComponent }
 ];
 
 @NgModule({
@@ -45,8 +51,9 @@ const appRoutes: Routes = [
     NgxFileDropModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true}// <-- debugging purposes only
-    )
+      { enableTracing: true } // <-- debugging purposes only
+    ),
+    NoopAnimationsModule
   ],
   declarations: [
     AppComponent,
@@ -64,9 +71,10 @@ const appRoutes: Routes = [
     SeleccionComponent,
     AdmisibilidadComponent,
     TablaProyectoComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    AgregarConcursoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
