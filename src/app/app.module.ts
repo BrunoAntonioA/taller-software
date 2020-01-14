@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxFileDropModule } from 'ngx-file-drop';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,8 +21,10 @@ import { PreseleccionComponent } from './preseleccion/preseleccion.component';
 import { SeleccionComponent } from './seleccion/seleccion.component';
 import { AdmisibilidadComponent } from './admisibilidad/admisibilidad.component';
 import { TablaProyectoComponent } from './tabla-proyecto/tabla-proyecto.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { AgregarConcursoComponent } from "./agregar-concurso/agregar-concurso.component";
+
 
 const appRoutes: Routes = [
   { path: '', component: InicioComponent },
@@ -46,6 +48,7 @@ const appRoutes: Routes = [
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxFileDropModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
@@ -68,6 +71,7 @@ const appRoutes: Routes = [
     SeleccionComponent,
     AdmisibilidadComponent,
     TablaProyectoComponent,
+    FileUploadComponent,
     AgregarConcursoComponent
   ],
   providers: [],
