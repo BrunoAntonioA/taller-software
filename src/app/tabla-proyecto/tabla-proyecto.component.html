@@ -1,91 +1,232 @@
-<div class="container-fluid" style="margin-top: 20px;">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Datos concursante</h4>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6 pr-1">
-                                    <div class="form-group">
-                                        <label>Concurso (desactivado)</label>
-                                        <input type="text" class="form-control" disabled="" placeholder="Nombre del concurso" value="Creative Code Inc.">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 px-1">
-                                    <div class="form-group">
-                                        <label>Nombre</label>
-                                        <input type="text" class="form-control" placeholder="Username" value="michael23">
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 pr-1">
-                                    <div class="form-group">
-                                        <label>Nombre jefe de proyecto</label>
-                                        <input type="text" class="form-control" placeholder="Company" value="Mike">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 pl-1">
-                                    <div class="form-group">
-                                        <label>Apellido jefe de proyecto</label>
-                                        <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 pl-1">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email encargado</label>
-                                        <input type="email" class="form-control" placeholder="Email">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Institución</label>
-                                        <input type="text" class="form-control" placeholder="Home Address" value="Pontificia Universidad Católica de Valparaíso">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                      <a >Link para descargar el archivo</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar datos</button>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                </div>
+<div class="card-body" style="margin-top: 10px;">
+    
+        <form>
+            <div class="form-group">
+            <label for="tipoproyecto">Tipo de Proyecto: DIE - Desarrolla y Valida.</label>
+            <div>
+                <label for="tiempoejecucion">Tiempo de ejecucion: 8</label>
             </div>
-            <div class="col-md-4">
-                <div class="card card-user">
-                    <div class="card-image">
-                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="...">
+            </div>
+            <div class="form-group">
+              <label for="nombreproyecto">Nombre Proyecto</label>
+              <input type="name" class="form-control" id="nombreproyecto" placeholder="Escriba el nombre de proyecto"[(ngModel)]="nombre">
+              <label for="director_proyecto">Director Proyecto</label>
+              <input type="director_proyecto" class="form-control" id="director_proyecto" placeholder=""[(ngModel)]="director">
+            
+    
+            </div>
+        </form>
+    
+    
+    
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">NOMBRE COMPLETO</th>
+                <th scope="col">N°RUT</th>
+                <th scope="col">UNIDAD ACADEMICA</th>
+                <th scope="col">E-MAIL</th>
+                <th scope="col">N° CELULAR</th>
+                <th scope="col">N° ANEXO</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let field of fieldArray; let i = index">
+              <td>
+                  <input [(ngModel)]="field.nombre" class="form-control" type="text" name="{{field.nombre}}" />
+                </td>
+                <td>
+                    <input [(ngModel)]="field.rut" class="form-control" type="text" name="{{field.rut}}" />
+                </td>
+                <td>
+                    <input [(ngModel)]="field.unidad_academica" class="form-control" type="text" name="{{field.unidad_academica}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="field.email" class="form-control" type="text" name="{{field.email}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="field.celular" class="form-control" type="text" name="{{field.celular}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="field.anexo" class="form-control" type="text" name="{{field.anexo}}" />
+                </td>
+                <td>
+                  <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Eliminar</button>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+    
+    
+        <div class="center">
+          <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+          (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+              <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                Arrastre los archivos aqui
+              </ng-template>
+          </ngx-file-drop>
+          <div class="upload-table">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Archivos</th>
+                      </tr>
+                  </thead>
+                  <tbody class="upload-name-style">
+                      <tr *ngFor="let item of files; let i=index">
+                          <td><strong>{{ item.relativePath }}</strong></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+    
+        
+    
+    
+    <!-- -->
+      <div class="text-right mb-3">
+        <button type="button" (click)="addFieldValue()" class="btn btn-success">Terminar postulacion</button>
+      </div>
+    
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLongTitle">Agregar postulante</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                    <label for="nombreproyecto">Nombre Postulante</label>
+                    <input type="text" class="form-control" id="newAttributeNombre" name="newAttributeNombre" [(ngModel)]="newAttribute.nombre">
+                    <label for="rut">N° RUT</label>
+                    <input type="text" class="form-control" id="newAttributeRut" name="newAttributeRut" [(ngModel)]="newAttribute.rut">
+                    <label for="unidad_academica">Unidad academica</label>
+                    <input type="text" class="form-control" id="newAttributeUnidadAcademica" name="newAttributeUnidadAcademica" [(ngModel)]="newAttribute.unidad_academica">
+                    <label for="email">E-MAIL</label>
+                    <input type="text" class="form-control" id="newAttributeEmail" name="newAttributeEmail" [(ngModel)]="newAttribute.email">
+                    <label for="celular">Celular</label>
+                    <input type="text" class="form-control" id="newAttributeCelular" name="newAttributeCelular" [(ngModel)]="newAttribute.celular">
+                    <label for="n_anexo">N° Anexo</label>
+                    <input type="text" class="form-control" id="newAttributeAnexo" name="newAttributeAnexo" [(ngModel)]="newAttribute.anexo">
+    
                     </div>
-                    <div class="card-body">
-                        <div class="author">
-                            <a href="#">
-                                <img class="avatar border-gray" src="../assets/img/faces/face-3.jpg" alt="...">
-                                <h5 class="title">Concurso</h5>
-                            </a>
-                            <p class="description">
-                                Nombre proyecto
-                            </p>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="addFieldValue()" data-dismiss="modal" class="btn btn-primary">Agregar</button>
+            </div>
+          </div>
+        </div>
+    
+    
+    
+        
+    
+      </div>
+    
+    
+    </div>
+
+    <!--
+
+        <div class="container-fluid" style="margin-top: 20px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Datos concursante</h4>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6 pr-1">
+                                            <div class="form-group">
+                                                <label>Concurso (desactivado)</label>
+                                                <input type="text" class="form-control" disabled="" placeholder="Nombre del concurso" value="Creative Code Inc.">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-1">
+                                            <div class="form-group">
+                                                <label>Nombre</label>
+                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 pr-1">
+                                            <div class="form-group">
+                                                <label>Nombre jefe de proyecto</label>
+                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pl-1">
+                                            <div class="form-group">
+                                                <label>Apellido jefe de proyecto</label>
+                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pl-1">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email encargado</label>
+                                                <input type="email" class="form-control" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Institución</label>
+                                                <input type="text" class="form-control" placeholder="Home Address" value="Pontificia Universidad Católica de Valparaíso">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                              <a >Link para descargar el archivo</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar datos</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
                         </div>
-                        <p class="description text-center">
-                            Datos locos
-                        </p>
                     </div>
-                    <hr>
+                    <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="card-image">
+                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <div class="author">
+                                    <a href="#">
+                                        <img class="avatar border-gray" src="../assets/img/faces/face-3.jpg" alt="...">
+                                        <h5 class="title">Concurso</h5>
+                                    </a>
+                                    <p class="description">
+                                        Nombre proyecto
+                                    </p>
+                                </div>
+                                <p class="description text-center">
+                                    Datos locos
+                                </p>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+    -->
+
