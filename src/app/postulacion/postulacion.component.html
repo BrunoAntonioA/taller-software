@@ -10,9 +10,9 @@
         </div>
         <div class="form-group">
           <label for="nombreproyecto">Nombre Proyecto</label>
-          <input type="name" class="form-control" id="nombreproyecto" placeholder="Escriba el nombre de proyecto"[(ngModel)]="nombre">
+          <input type="name" class="form-control" id="nombreproyecto" placeholder="Escriba el nombre de proyecto"[(ngModel)]="nombre_proyecto">
           <label for="director_proyecto">Director Proyecto</label>
-          <input type="director_proyecto" class="form-control" id="director_proyecto" placeholder=""[(ngModel)]="director">
+          <input type="director_proyecto" class="form-control" id="director_proyecto" placeholder=""[(ngModel)]="director_proyecto">
         
 
         </div>
@@ -90,7 +90,7 @@
 
 <!-- -->
   <div class="text-right mb-3">
-    <button type="button" (click)="addFieldValue()" class="btn btn-success">Terminar postulacion</button>
+    <button type="button" (click)="postular()" class="btn btn-success">Terminar postulacion</button>
   </div>
 
   <!-- Modal -->

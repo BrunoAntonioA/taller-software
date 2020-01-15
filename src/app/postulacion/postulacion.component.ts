@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConcursoService} from '../shared/concurso/concurso.service';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { ProyectoService } from '../shared/proyecto/proyecto.service';
+import { Proyecto } from '../shared/proyecto/proyecto.model';
+import { PostulanteService } from '../shared/postulante/postulante.service';
 
 @Component({
   selector: 'app-postulacion',
@@ -9,7 +12,7 @@ import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 
 })
 export class PostulacionComponent implements OnInit {
   
-  constructor(private concursoService : ConcursoService) {
+  constructor(private concursoService : ConcursoService, private proyectoService: ProyectoService,private postulanteService : PostulanteService) {
 
    }
    
@@ -29,8 +32,8 @@ export class PostulacionComponent implements OnInit {
   private fieldArray: Array<any> = [];
   private newAttribute: any = {};
   public files: NgxFileDropEntry[] = [];
-
-
+  private nombre_proyecto:String;
+  private director_proyecto:String;
 
   addFieldValue() {
       this.fieldArray.push(this.newAttribute)
@@ -40,6 +43,14 @@ export class PostulacionComponent implements OnInit {
   deleteFieldValue(index) {
       this.fieldArray.splice(index, 1);
   }
+
+  postular(){
+    console.log(this.fieldArray);
+    console.log(this.files);
+
+
+  }
+
 
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;

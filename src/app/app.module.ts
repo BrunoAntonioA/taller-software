@@ -24,6 +24,7 @@ import { TablaProyectoComponent } from './tabla-proyecto/tabla-proyecto.componen
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { AgregarConcursoComponent } from "./agregar-concurso/agregar-concurso.component";
+import { EvaluacionComponent } from './evaluacion/evaluacion.component';
 
 
 const appRoutes: Routes = [
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
   { path: 'seleccion', component: SeleccionComponent},
   { path: 'admisibilidad', component: AdmisibilidadComponent},
   { path: 'tabla-proyecto', component: TablaProyectoComponent},
-  { path: "agregar-concurso", component: AgregarConcursoComponent}
+  { path: "agregar-concurso", component: AgregarConcursoComponent},
+  { path: "evaluacion", component: EvaluacionComponent}
 ];
 
 @NgModule({
@@ -72,7 +74,8 @@ const appRoutes: Routes = [
     AdmisibilidadComponent,
     TablaProyectoComponent,
     FileUploadComponent,
-    AgregarConcursoComponent
+    AgregarConcursoComponent,
+    EvaluacionComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
