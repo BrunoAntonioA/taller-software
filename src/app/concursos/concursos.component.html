@@ -1,6 +1,7 @@
 <div class="row">
 
-    <div *ngIf="this.concursoService.seleccionado; else seleccionadoActivo" class="col-md-12">
+    <div *ngIf="this.etapa == 0">
+        <div *ngIf="this.concursoService.seleccionado; else seleccionadoActivo" class="col-md-12">
             <nav class="navbar navbar-default navbar-fixed">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse">
@@ -78,33 +79,33 @@
                             <div class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">
                                     <li>
-                                    <a class="mx-2" routerLink="/admisibilidad">
+                                    <a class="mx-2" (click)="changeEtapa(1)">
                                         <p>Adminisibilidad</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a style="margin-left: 100px;" href="">
+                                        <a style="margin-left: 100px;" (click)="changeEtapa(2)">
                                             <p>Evaluación 1</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a style="margin-left: 100px;" href="">
+                                        <a style="margin-left: 100px;" (click)="changeEtapa(3)">
                                             <p>Notificación 1</p>
                                         </a>
                                     </li>
                                     
                                     <li>
-                                        <a style="margin-left: 100px;" href="">
+                                        <a style="margin-left: 100px;" (click)="changeEtapa(4)">
                                             <p>Eventos</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a style="margin-left: 100px;" href="">
+                                        <a style="margin-left: 100px;" (click)="changeEtapa(2)">
                                             <p>Evaluación 2</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a style="margin-left: 100px;" href="">
+                                        <a style="margin-left: 100px;" (click)="changeEtapa(3)">
                                             <p>Notificación 2</p>
                                         </a>
                                     </li>
@@ -116,6 +117,22 @@
                     <app-tabla-proyecto></app-tabla-proyecto>
                 </ng-template>
     </ng-template>
+
+    </div>
+    <div *ngIf="this.etapa == 1">
+        <app-admisibilidad></app-admisibilidad>     
+    </div>
+    <div *ngIf="this.etapa == 2">
+        <app-evaluacion></app-evaluacion>  
+    </div>
+    <div *ngIf="this.etapa == 3">
+        <app-notificacion></app-notificacion>     
+    </div>
+    <div *ngIf="this.etapa == 4">
+        <app-eventos></app-eventos>  
+    </div>
+
+    
 
   <button (click)="selectConcurso()">activar</button> 
 

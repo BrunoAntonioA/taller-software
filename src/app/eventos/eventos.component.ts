@@ -8,10 +8,6 @@ import { Evento } from '../evento';
 })
 export class EventosComponent implements OnInit {
 
-  eventos = [
-    new Evento('Taller de ciencias', new Date(10-10-10))
-  ];
-
   constructor() { }
 
   ngOnInit() {

@@ -27,14 +27,15 @@
                 <div class="table-full-width">
                     <table class="table">
                         <thead>
-                            <th></th>
+                            <th>
+                                
+                            </th>
                             <th>
                                 Nombre
                             </th>
                             <th>
                                 Fecha
                             </th>
-                            <th></th>
                         </thead>
                         <tbody>
                             <tr>
@@ -46,14 +47,6 @@
                                 </td>
                                 <td>Seminario de emprendimiento</td>
                                 <td>Fecha del evento</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -68,10 +61,4 @@
             </div>
         </div>
 </div>
-<ul>
-    <li *ngFor="let evento of eventos">
-      {{ evento.nombre }}
-      {{ evento.fecha }}
-    </li>
-</ul>
 `

@@ -17,14 +17,22 @@ import { Proyecto } from '../shared/proyecto/proyecto.model';
 })
 export class ConcursosComponent implements OnInit {
 
+  private etapa : any;
+
   constructor(private concursoService: ConcursoService, private proyectoService: ProyectoService){}
 
   ngOnInit() {
+
+    this.etapa = 0;
     this.concursoService.agregar = false;
     this.concursoService.seleccionado = true;
     this.proyectoService.seleccionado = false;
     this.refreshConcursoList();
 
+  }
+
+  changeEtapa(n){
+    this.etapa = n;
   }
 
   refreshConcursoList(){
