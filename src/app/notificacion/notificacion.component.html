@@ -1,0 +1,109 @@
+<nav class="navbar navbar-default navbar-fixed">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a class="mx-2" routerLink="/admisibilidad">
+            <p>Adminisibilidad</p>
+          </a>
+        </li>
+        <li>
+          <a style="margin-left: 100px;" routerLink="/evaluacion">
+            <p>Evaluación 1</p>
+          </a>
+        </li>
+        <li>
+          <a style="margin-left: 100px;" routerLink="/notificacion">
+            <p>Notificación 1</p>
+          </a>
+        </li>
+        <li>
+          <a style="margin-left: 100px;" routerLink="/eventos">
+            <p>Eventos</p>
+          </a>
+        </li>
+        <li>
+          <a style="margin-left: 100px;" routerLink="/evaluacion">
+            <p>Evaluación 2</p>
+          </a>
+        </li>
+        <li>
+          <a style="margin-left: 100px;" routerLink="/notificacion">
+            <p>Notificación 2</p>
+          </a>
+        </li>
+        <li class="separator hidden-lg"></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h2>Notificaciones</h2>
+
+<div class="container-form-1">
+  <form action="/action_page.php">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Nombre del proyecto</label>
+      </div>
+      <div class="col-75">
+        <input
+          type="text"
+          id="fname"
+          name="firstname"
+          placeholder="Nombre de proyecto"
+          [(ngModel)]="nombreDelProyecto"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Correo de jefe de proyecto</label>
+      </div>
+      <div class="col-75">
+        <input
+          type="text"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          id="email"
+          name="email"
+          [(ngModel)]="correoJefeProyecto"
+          #emailref="ngModel"
+        />
+        <div
+          *ngIf="emailref.errors && (emailref.touched || emailref.dirty)"
+          class="aler alert-danger"
+        >
+          Debes ingresar un mail válido
+        </div>
+      </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Retroalimentación</label>
+      </div>
+      <div class="col-75">
+        <textarea
+          id="subject"
+          name="subject"
+          placeholder="Write something.."
+          style="height:200px"
+          [(ngModel)]="retroalimentacion"
+        ></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Submit" (click)="onClick()" />
+    </div>
+  </form>
+
+  <br />
+
+  <ul class="list-group">
+    <li *ngFor="let notificacion of notificaciones" class="list-group-item">
+      <p>Nombre del proyecto: {{ notificacion.nombreDelProyecto }}</p>
+      <p>Correo del jefe de grupo: {{ notificacion.correoJefeProyecto }}</p>
+      <p>Retroalimentacion: {{ notificacion.retroalimentacion }}</p>
+    </li>
+  </ul>
+</div>

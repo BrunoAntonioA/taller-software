@@ -3,4 +3,5 @@ export class Concurso {
     nombre: string;
     fecha_inicio: Date;
     fecha_termino: Date;
+    duracion : number;
 }

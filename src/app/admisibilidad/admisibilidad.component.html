@@ -1,6 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed">
-    <div class="container-fluid">
-        
+    <div class="container-fluid">  
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
@@ -9,23 +8,28 @@
                     </a>
                 </li>
                 <li>
-                    <a style="margin-left: 100px;" href="">
+                   <a style="margin-left: 100px;" routerLink="/evaluacion">
+                       <p>Evaluación 1</p>
+                    </a>
+                </li>
+                <li>
+                    <a style="margin-left: 100px;" routerLink="/notificacion">
                         <p>Notificación 1</p>
                      </a>
                  </li>
                  <li>
-                    <a style="margin-left: 100px;" href="">
-                        <p>Evaluación 1</p>
+                    <a style="margin-left: 100px;" routerLink="/eventos">
+                        <p>Eventos</p>
                      </a>
                  </li>
                  <li>
-                    <a style="margin-left: 100px;" href="">
-                        <p>Notificación 2</p>
-                     </a>
-                 </li>
-                 <li>
-                    <a style="margin-left: 100px;" href="">
+                    <a style="margin-left: 100px;" routerLink="/evaluacion">
                         <p>Evaluación 2</p>
+                     </a>
+                 </li>
+                 <li>
+                    <a style="margin-left: 100px;" routerLink="/notificacion">
+                        <p>Notificación 2</p>
                      </a>
                  </li>
                 <li class="separator hidden-lg"></li>
@@ -34,8 +38,132 @@
     </div>
 </nav>
 
-<app-tabla-proyecto></app-tabla-proyecto>
-
-<div class="container-fluid" style="margin-top: 10px;">
-  <button> Aprobar admisibilidad </button>
+<div class="card-body" style="margin-top: 10px;">
+    
+        <form>
+            <div class="form-group">
+            <label for="tipoproyecto">Tipo de Proyecto: DIE - Desarrolla y Valida.</label>
+            <div>
+                <label for="tiempoejecucion">Tiempo de ejecucion: 8</label>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="nombreproyecto">Nombre Proyecto</label>
+              <input type="name" class="form-control" id="nombreproyecto" placeholder="Escriba el nombre de proyecto"[(ngModel)]="nombre">
+              <label for="director_proyecto">Director Proyecto</label>
+              <input type="director_proyecto" class="form-control" id="director_proyecto" placeholder=""[(ngModel)]="director">
+            
+    
+            </div>
+        </form>
+    
+    
+    
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">NOMBRE COMPLETO</th>
+                <th scope="col">N°RUT</th>
+                <th scope="col">UNIDAD ACADEMICA</th>
+                <th scope="col">E-MAIL</th>
+                <th scope="col">N° CELULAR</th>
+                <th scope="col">N° ANEXO</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let postulante of postulanteService.postulantes; let i = index">
+              <td>
+                  <input [(ngModel)]="postulante.nombre" class="form-control" type="text" name="{{postulante.nombre}}" />
+                </td>
+                <td>
+                    <input [(ngModel)]="postulante.rut" class="form-control" type="text" name="{{postulante.rut}}" />
+                </td>
+                <td>
+                    <input [(ngModel)]="postulante.unidadAcademica" class="form-control" type="text" name="{{postulante.unidad_academica}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="postulante.correo" class="form-control" type="text" name="{{postulante.email}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="postulante.celular" class="form-control" type="text" name="{{postulante.celular}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="postulante.anexo" class="form-control" type="text" name="{{postulante.anexo}}" />
+                </td>
+                <td>
+                  <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Eliminar</button>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+    
+    
+        <div class="center">
+          <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+          (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+              <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                Arrastre los archivos aqui
+              </ng-template>
+          </ngx-file-drop>
+          <div class="upload-table">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Archivos</th>
+                      </tr>
+                  </thead>
+                  <tbody class="upload-name-style">
+                      <tr *ngFor="let item of files; let i=index">
+                          <td><strong>{{ item.relativePath }}</strong></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+    
+        
+    
+    
+    <!-- -->
+      <div class="text-right mb-3">
+        <button type="button" style="margin-right: 50px;" class="btn btn-success">Aprobar admisibilidad</button>
+        <button type="button" class="btn btn-danger">Reprobar admisibilidad</button>
+      </div>
+    
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLongTitle">Agregar postulante</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                    <label for="nombreproyecto">Nombre Postulante</label>
+                    <input type="text" class="form-control" id="newAttributeNombre" name="newAttributeNombre" [(ngModel)]="newAttribute.nombre">
+                    <label for="rut">N° RUT</label>
+                    <input type="text" class="form-control" id="newAttributeRut" name="newAttributeRut" [(ngModel)]="newAttribute.rut">
+                    <label for="unidad_academica">Unidad academica</label>
+                    <input type="text" class="form-control" id="newAttributeUnidadAcademica" name="newAttributeUnidadAcademica" [(ngModel)]="newAttribute.unidad_academica">
+                    <label for="email">E-MAIL</label>
+                    <input type="text" class="form-control" id="newAttributeEmail" name="newAttributeEmail" [(ngModel)]="newAttribute.email">
+                    <label for="celular">Celular</label>
+                    <input type="text" class="form-control" id="newAttributeCelular" name="newAttributeCelular" [(ngModel)]="newAttribute.celular">
+                    <label for="n_anexo">N° Anexo</label>
+                    <input type="text" class="form-control" id="newAttributeAnexo" name="newAttributeAnexo" [(ngModel)]="newAttribute.anexo">
+    
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="addFieldValue()" data-dismiss="modal" class="btn btn-primary">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
