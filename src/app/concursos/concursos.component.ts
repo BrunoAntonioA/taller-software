@@ -41,8 +41,10 @@ export class ConcursosComponent implements OnInit {
     this.concursoService.concursos = [];
     this.concursoService.getConcursoList().subscribe((res) => {
       this.concursoService.concursos = res as Concurso[];
+      console.log('get successfull')
     });
     this.concursoService.selectedConcurso = new Concurso;
+    console.log('refreshConcursoList');
   }
   
   refreshProyectoList(){
