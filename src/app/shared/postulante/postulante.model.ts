@@ -6,4 +6,5 @@ export class Postulante {
     correo: string;
     nAnexo: number;
     celular: string;
+    postulantes: [];
 }
