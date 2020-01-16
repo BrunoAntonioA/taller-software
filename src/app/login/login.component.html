@@ -1,0 +1,49 @@
+<div class="sidenav">
+  <div class="login-main-text display-flex-items">
+    <h2 style="text-align: center;">DIE<br /></h2>
+    <p style="text-align: center;">
+      Dirección de Innovación y emprendimiento <br />
+    </p>
+    <h3 style="text-align: center;">
+      Pontificia Universidad Católica de Vaparaíso
+    </h3>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <h3 style="margin-top: -30px;">Iniciar Sesión</h3>
+      <form>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="ingrese su correo"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            id="email"
+            name="email"
+            [(ngModel)]="correoJefeProyecto"
+            #emailref="ngModel"
+          />
+          <div
+            *ngIf="emailref.errors && (emailref.touched || emailref.dirty)"
+            class="aler alert-danger"
+          >
+            Debes ingresar un mail válido
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="ingrese su password"
+            [(ngModel)]="password"
+          />
+        </div>
+        <button type="submit" class="btn btn-black">Iniciar sesión</button>
+      </form>
+    </div>
+  </div>
+</div>

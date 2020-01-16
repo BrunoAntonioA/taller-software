@@ -25,6 +25,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { AgregarConcursoComponent } from "./agregar-concurso/agregar-concurso.component";
 import { EvaluacionComponent } from "./evaluacion/evaluacion.component";
 import { NotificacionComponent } from "./notificacion/notificacion.component";
+import { LoginComponent } from "./login/login.component";
 
 const appRoutes: Routes = [
   { path: "", component: InicioComponent },
@@ -41,21 +42,22 @@ const appRoutes: Routes = [
   { path: "tabla-proyecto", component: TablaProyectoComponent },
   { path: "agregar-concurso", component: AgregarConcursoComponent },
   { path: "notificacion", component: NotificacionComponent },
-  { path: '', component: InicioComponent },
-  { path: 'postulacion', component: PostulacionComponent },
-  { path: 'eventos', component: EventosComponent },
-  { path: 'footer', component: FooterComponent},
-  { path: 'concursos', component: ConcursosComponent},
-  { path: 'finanzas', component: FinanzasComponent},
-  { path: 'estadisticas', component: EstadisticasComponent},
-  { path: 'inicio', component: InicioComponent},
-  { path: 'preseleccion', component: PreseleccionComponent},
-  { path: 'seleccion', component: SeleccionComponent},
-  { path: 'admisibilidad', component: AdmisibilidadComponent},
-  { path: 'tabla-proyecto', component: TablaProyectoComponent},
-  { path: "agregar-concurso", component: AgregarConcursoComponent},
-  { path: "evaluacion", component: EvaluacionComponent},
-  { path: "notificacion", component: NotificacionComponent}
+  { path: "", component: InicioComponent },
+  { path: "postulacion", component: PostulacionComponent },
+  { path: "eventos", component: EventosComponent },
+  { path: "footer", component: FooterComponent },
+  { path: "concursos", component: ConcursosComponent },
+  { path: "finanzas", component: FinanzasComponent },
+  { path: "estadisticas", component: EstadisticasComponent },
+  { path: "inicio", component: InicioComponent },
+  { path: "preseleccion", component: PreseleccionComponent },
+  { path: "seleccion", component: SeleccionComponent },
+  { path: "admisibilidad", component: AdmisibilidadComponent },
+  { path: "tabla-proyecto", component: TablaProyectoComponent },
+  { path: "agregar-concurso", component: AgregarConcursoComponent },
+  { path: "evaluacion", component: EvaluacionComponent },
+  { path: "notificacion", component: NotificacionComponent },
+  { path: "login", component: LoginComponent }
 ];
 
 @NgModule({
@@ -90,7 +92,8 @@ const appRoutes: Routes = [
     FileUploadComponent,
     AgregarConcursoComponent,
     EvaluacionComponent,
-    NotificacionComponent
+    NotificacionComponent,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
