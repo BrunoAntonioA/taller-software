@@ -35,6 +35,7 @@ export class PostulacionComponent implements OnInit {
   public files: NgxFileDropEntry[] = [];
   public nombreproyecto:String = "";
   public directorproyecto:String = "";
+  public email_jefe:String = "";
 
   addFieldValue() {
       this.fieldArray.push(this.newAttribute)
@@ -67,6 +68,11 @@ export class PostulacionComponent implements OnInit {
       logrado = 0;
     }
     
+    if(!this.validateEmail(this.email_jefe)){
+      alert("email no valido");
+      logrado = 0;
+    }
+
     for (let field of this.fieldArray){
 
       if(!(field.nombre.length>0)){
@@ -74,10 +80,6 @@ export class PostulacionComponent implements OnInit {
         logrado = 0;
       }
 
-      if(!this.validateEmail(field.email)){
-        alert("email no valido");
-        logrado = 0;
-      }
 
       if(!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( field.rut)){
         alert("rut no valido");
@@ -98,8 +100,13 @@ export class PostulacionComponent implements OnInit {
 
     if(logrado == 1){
       //hacemos el post
-      alert("Logrado iniciando post")
-      
+      let proyecto: any= {};
+      proyecto.nombre_proyecto = this.nombreproyecto;
+      proyecto.nombre_jefe_proyecto = this.directorproyecto;
+      proyecto.email_jefe = this.email_jefe;
+      proyecto.postulantes = this.fieldArray;
+      this.postulanteService.postProyecto(proyecto);
+      alert("Logrado")
     }
 
 

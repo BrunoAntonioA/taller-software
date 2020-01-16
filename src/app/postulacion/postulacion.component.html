@@ -13,6 +13,8 @@
     <input [(ngModel)]="nombreproyecto" class= "form-control" type="text"name="{{nombreproyecto}}"/>
     <label for="director_proyecto">Director Proyecto</label>
     <input [(ngModel)]="directorproyecto" class="form-control" type="text" name="{{directorproyecto}}"/>
+    <label for="email_jefe">Email jefe</label>
+    <input [(ngModel)]="email_jefe" class="form-control" type="text" name="{{email_jefe}}"/>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
       Agregar postulante
     </button>
@@ -25,7 +27,6 @@
             <th scope="col">NOMBRE COMPLETO</th>
             <th scope="col">N°RUT</th>
             <th scope="col">UNIDAD ACADEMICA</th>
-            <th scope="col">E-MAIL</th>
             <th scope="col">N° CELULAR</th>
             <th scope="col">N° ANEXO</th>
         </tr>
@@ -40,9 +41,6 @@
             </td>
             <td>
                 <input [(ngModel)]="field.unidad_academica" class="form-control" type="text" name="{{field.unidad_academica}}" />
-            </td>
-            <td>
-              <input [(ngModel)]="field.email" class="form-control" type="text" name="{{field.email}}" />
             </td>
             <td>
               <input [(ngModel)]="field.celular" class="form-control" type="text" name="{{field.celular}}" />
