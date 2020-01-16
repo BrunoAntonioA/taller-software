@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-fixed">
     <div class="container-fluid">  
         <div class="collapse navbar-collapse">
@@ -37,3 +38,32 @@
         </div>
     </div>
 </nav>
+<h1>Evaluacion de proyecto</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+      <th scope="col">NOMBRE DE JUEZ</th>
+      <th scope="col">NOTA</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let field of fieldArray; let i = index">
+    <td>
+        <input [(ngModel)]="field.nombre" class="form-control" type="text" name="{{field.nombre}}" />
+      </td>
+      <td>
+          <input [(ngModel)]="field.nota" class="form-control" type="text" name="{{field.nota}}" />
+      </td>
+      <td>
+        <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Eliminar</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button type="button" (click)="addFieldValue()" data-dismiss="modal" class="btn btn-primary">Agregar</button>
+
+<div class="text-right mb-3">
+  <button type="button" (click)="evaluar()" class="btn btn-success">Terminar evaluacion</button>
+</div>

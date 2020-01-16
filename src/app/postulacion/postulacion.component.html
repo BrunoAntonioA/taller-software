@@ -8,15 +8,11 @@
             <label for="tiempoejecucion">Tiempo de ejecucion: 8</label>
         </div>
         </div>
-        <div class="form-group">
-          <label for="nombreproyecto">Nombre Proyecto</label>
-          <input type="name" class="form-control" id="nombreproyecto" placeholder="Escriba el nombre de proyecto"[(ngModel)]="nombre">
-          <label for="director_proyecto">Director Proyecto</label>
-          <input type="director_proyecto" class="form-control" id="director_proyecto" placeholder=""[(ngModel)]="director">
-        
-
-        </div>
     </form>
+    <label for="nombre_proyecto">Nombre Proyecto</label>
+    <input [(ngModel)]="nombreproyecto" class= "form-control" type="text"name="{{nombreproyecto}}"/>
+    <label for="director_proyecto">Director Proyecto</label>
+    <input [(ngModel)]="directorproyecto" class="form-control" type="text" name="{{directorproyecto}}"/>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
       Agregar postulante
     </button>
@@ -90,7 +86,7 @@
 
 <!-- -->
   <div class="text-right mb-3">
-    <button type="button" (click)="addFieldValue()" class="btn btn-success">Terminar postulacion</button>
+    <button type="button" (click)="postular()" class="btn btn-success">Terminar postulacion</button>
   </div>
 
   <!-- Modal -->
@@ -106,7 +102,7 @@
         <div class="modal-body">
             <form>
                 <div class="form-group">
-                <label for="nombreproyecto">Nombre Postulante</label>
+                <label for="nombrepostulante">Nombre Postulante</label>
                 <input type="text" class="form-control" id="newAttributeNombre" name="newAttributeNombre" [(ngModel)]="newAttribute.nombre">
                 <label for="rut">N° RUT</label>
                 <input type="text" class="form-control" id="newAttributeRut" name="newAttributeRut" [(ngModel)]="newAttribute.rut">
