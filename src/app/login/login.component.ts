@@ -21,5 +21,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  iniciarSesion(){
+    
+  }
+
   ngOnInit() {}
 }

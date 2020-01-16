@@ -28,7 +28,7 @@ import { NotificacionComponent } from "./notificacion/notificacion.component";
 import { LoginComponent } from "./login/login.component";
 
 const appRoutes: Routes = [
-  { path: "", component: InicioComponent },
+  { path: "", component: ConcursosComponent },
   { path: "postulacion", component: PostulacionComponent },
   { path: "eventos", component: EventosComponent },
   { path: "footer", component: FooterComponent },
@@ -42,7 +42,6 @@ const appRoutes: Routes = [
   { path: "tabla-proyecto", component: TablaProyectoComponent },
   { path: "agregar-concurso", component: AgregarConcursoComponent },
   { path: "notificacion", component: NotificacionComponent },
-  { path: "", component: InicioComponent },
   { path: "postulacion", component: PostulacionComponent },
   { path: "eventos", component: EventosComponent },
   { path: "footer", component: FooterComponent },

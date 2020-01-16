@@ -7,6 +7,12 @@ import { Router } from "@angular/router";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+
+  private login = 0;
   constructor(public router: Router) {}
-  title = "DIE-system";
+
+  iniciarSesion(){
+    this.login = 1;
+  }
+
 }

@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ConcursoService} from '../shared/concurso/concurso.service';
+import { Concurso } from '../shared/concurso/concurso.model';
+
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { ProyectoService } from '../shared/proyecto/proyecto.service';
 import { Proyecto } from '../shared/proyecto/proyecto.model';
 import { PostulanteService } from '../shared/postulante/postulante.service';
 import { Postulante } from '../shared/postulante/postulante.model';
+
 
 
 @Component({
@@ -20,10 +24,22 @@ export class PostulacionComponent implements OnInit {
    
   ngOnInit() {
     this.concursoService.seleccionado = false;
+    this.refreshConcursoList();
 
   }
 
-  selectConcurso(){
+  refreshConcursoList(){
+    this.concursoService.concursos = [];
+    this.concursoService.getConcursoList().subscribe((res) => {
+      this.concursoService.concursos = res as Concurso[];
+      console.log('get successfull')
+    });
+    this.concursoService.selectedConcurso = new Concurso;
+    console.log('refreshConcursoList');
+  }
+
+  selectConcurso(concurso : Concurso){
+    this.concursoService.selectedConcurso = concurso;
     if(this.concursoService.seleccionado == true){
       this.concursoService.seleccionado = false;
     }else{
