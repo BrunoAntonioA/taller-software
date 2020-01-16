@@ -4,6 +4,8 @@ import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 
 import { ProyectoService } from '../shared/proyecto/proyecto.service';
 import { Proyecto } from '../shared/proyecto/proyecto.model';
 import { PostulanteService } from '../shared/postulante/postulante.service';
+import { Postulante } from '../shared/postulante/postulante.model';
+
 
 @Component({
   selector: 'app-postulacion',
@@ -102,14 +104,16 @@ export class PostulacionComponent implements OnInit {
       //hacemos el post
       let proyecto: any= {};
       proyecto.nombre_proyecto = this.nombreproyecto;
-      proyecto.nombre_jefe_proyecto = this.directorproyecto;
       proyecto.email_jefe = this.email_jefe;
+      proyecto.nombre_jefe_proyecto = this.directorproyecto;
       proyecto.postulantes = this.fieldArray;
-      this.postulanteService.postProyecto(proyecto).subscribe((res) => {
-        console.log(res)
-      });
+      this.proyectoService.postProyecto(proyecto).subscribe((res) => {
+        var respuesta = res as Postulante
+        console.log(respuesta.postulantes);
+        alert("Logrado")
+        console.log('subido');
 
-      alert("Logrado")
+      });
     }
 
 
