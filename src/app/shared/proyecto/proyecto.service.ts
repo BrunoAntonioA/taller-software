@@ -18,7 +18,8 @@ export class ProyectoService {
   proyectoForm: Boolean;
   selectedProyecto: Proyecto;
   proyectos: Proyecto[];
-  readonly baseURL = 'http://localhost:3000/proyecto';
+  readonly baseURL = 'http://190.101.185.129:3000/proyecto';
+  readonly url = 'http://190.101.185.129:3000/pdf';
 
   constructor(private http : HttpClient) { 
   }
@@ -35,6 +36,9 @@ export class ProyectoService {
     return this.http.get(this.baseURL + `/${_id}`);
   }
 
+  postFiles(formData:any){
+    return this.http.post(this.url, formData, {responseType: 'blob'})
+  }
 
   putProyecto(proyecto : Proyecto) {
     return this.http.put(this.baseURL + `/${proyecto._id}`, proyecto);
@@ -43,4 +47,6 @@ export class ProyectoService {
   deleteProyecto(_id: string) {
     return this.http.delete(this.baseURL + `/${_id}`);
   }
+
+
 }

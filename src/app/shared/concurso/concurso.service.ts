@@ -19,7 +19,7 @@ export class ConcursoService {
   concursoForm: Boolean;
   selectedConcurso: Concurso;
   concursos: Concurso[];
-  readonly baseURL = 'http://localhost:3000/concurso';
+  readonly baseURL = 'http://190.101.185.129:3000/concurso';
 
   constructor(private http : HttpClient) { 
   }

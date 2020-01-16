@@ -124,10 +124,29 @@ export class PostulacionComponent implements OnInit {
       proyecto.nombre_jefe_proyecto = this.directorproyecto;
       proyecto.postulantes = this.fieldArray;
       this.proyectoService.postProyecto(proyecto).subscribe((res) => {
-        var respuesta = res as Postulante
-        console.log(respuesta.postulantes);
-        alert("Logrado")
+        var id_proyecto:String = res as string
+        var respuesta:any = {}
+        respuesta.id_proyecto = id_proyecto
+        respuesta.files = this.files
+        var filex
+        for (const droppedFile of this.files) {
+ 
+          // Is it a file?
+          if (droppedFile.fileEntry.isFile) {
+            const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+            fileEntry.file((file: File) => {
+             filex = file
+            
+            });
+
+          }
+        }
+        this.proyectoService.postFiles(filex).subscribe((res) =>{
+          console.log(res)
+          alert("Logrado")
         console.log('subido');
+        });
+
 
       });
     }
