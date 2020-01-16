@@ -105,7 +105,10 @@ export class PostulacionComponent implements OnInit {
       proyecto.nombre_jefe_proyecto = this.directorproyecto;
       proyecto.email_jefe = this.email_jefe;
       proyecto.postulantes = this.fieldArray;
-      this.postulanteService.postProyecto(proyecto);
+      this.postulanteService.postProyecto(proyecto).subscribe((res) => {
+        console.log(res)
+      });
+
       alert("Logrado")
     }
 
