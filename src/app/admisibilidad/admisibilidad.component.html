@@ -71,24 +71,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let field of fieldArray; let i = index">
+            <tr *ngFor="let postulante of postulanteService.postulantes; let i = index">
               <td>
-                  <input [(ngModel)]="field.nombre" class="form-control" type="text" name="{{field.nombre}}" />
+                  <input [(ngModel)]="postulante.nombre" class="form-control" type="text" name="{{postulante.nombre}}" />
                 </td>
                 <td>
-                    <input [(ngModel)]="field.rut" class="form-control" type="text" name="{{field.rut}}" />
+                    <input [(ngModel)]="postulante.rut" class="form-control" type="text" name="{{postulante.rut}}" />
                 </td>
                 <td>
-                    <input [(ngModel)]="field.unidad_academica" class="form-control" type="text" name="{{field.unidad_academica}}" />
+                    <input [(ngModel)]="postulante.unidadAcademica" class="form-control" type="text" name="{{postulante.unidad_academica}}" />
                 </td>
                 <td>
-                  <input [(ngModel)]="field.email" class="form-control" type="text" name="{{field.email}}" />
+                  <input [(ngModel)]="postulante.correo" class="form-control" type="text" name="{{postulante.email}}" />
                 </td>
                 <td>
-                  <input [(ngModel)]="field.celular" class="form-control" type="text" name="{{field.celular}}" />
+                  <input [(ngModel)]="postulante.celular" class="form-control" type="text" name="{{postulante.celular}}" />
                 </td>
                 <td>
-                  <input [(ngModel)]="field.anexo" class="form-control" type="text" name="{{field.anexo}}" />
+                  <input [(ngModel)]="postulante.anexo" class="form-control" type="text" name="{{postulante.anexo}}" />
                 </td>
                 <td>
                   <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Eliminar</button>
