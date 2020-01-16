@@ -5,4 +5,5 @@ export class Postulante {
     unidadAcademica: string;
     correo: string;
     nAnexo: number;
+    celular: string;
 }

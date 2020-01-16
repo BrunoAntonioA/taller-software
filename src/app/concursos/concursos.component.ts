@@ -28,6 +28,7 @@ export class ConcursosComponent implements OnInit {
     this.concursoService.seleccionado = true;
     this.proyectoService.seleccionado = false;
     this.refreshConcursoList();
+    this.refreshProyectoList();
 
   }
 
@@ -36,14 +37,19 @@ export class ConcursosComponent implements OnInit {
   }
 
   refreshConcursoList(){
-
     this.concursoService.concursos = [];
-    this.concursoService.getConcursoList().subscribe((res) => {
 
+    this.concursoService.getConcursoList().subscribe((res) => {
       this.concursoService.concursos = res as Concurso[];
-      console.log(res);
     });
-    
+  }
+  
+  refreshProyectoList(){
+    this.proyectoService.proyectos = [];
+
+    this.proyectoService.getProyectoList().subscribe((res) => {
+      this.proyectoService.proyectos = res as Proyecto[];
+    });
   }
 
   agregarConcurso(){

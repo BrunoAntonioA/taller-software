@@ -17,7 +17,25 @@ export class AdmisibilidadComponent implements OnInit {
   constructor(private concursoService : ConcursoService, private proyectoService : ProyectoService) { }
 
   ngOnInit() {
+    this.refreshConcursoList();
+    this.refreshProyectoList();
   }
 
+  refreshConcursoList(){
+    this.concursoService.concursos = [];
+
+    this.concursoService.getConcursoList().subscribe((res) => {
+      this.concursoService.concursos = res as Concurso[];
+    });
+  }
   
+  refreshProyectoList(){
+    this.proyectoService.proyectos = [];
+
+    this.proyectoService.getProyectoList().subscribe((res) => {
+      this.proyectoService.proyectos = res as Proyecto[];
+    });
+  }
+
+
 }
