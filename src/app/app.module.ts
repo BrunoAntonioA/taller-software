@@ -40,7 +40,7 @@ const appRoutes: Routes = [
   { path: "admisibilidad", component: AdmisibilidadComponent },
   { path: "tabla-proyecto", component: TablaProyectoComponent },
   { path: "agregar-concurso", component: AgregarConcursoComponent },
-  { path: "notificacion", component: NotificacionComponent }
+  { path: "notificacion", component: NotificacionComponent },
   { path: '', component: InicioComponent },
   { path: 'postulacion', component: PostulacionComponent },
   { path: 'eventos', component: EventosComponent },
