@@ -17,25 +17,39 @@ import { Proyecto } from '../shared/proyecto/proyecto.model';
 })
 export class ConcursosComponent implements OnInit {
 
+  private etapa : any;
+
   constructor(private concursoService: ConcursoService, private proyectoService: ProyectoService){}
 
   ngOnInit() {
+
+    this.etapa = 0;
     this.concursoService.agregar = false;
     this.concursoService.seleccionado = true;
     this.proyectoService.seleccionado = false;
     this.refreshConcursoList();
+    this.refreshProyectoList();
 
   }
 
+  changeEtapa(n){
+    this.etapa = n;
+  }
+
   refreshConcursoList(){
-
     this.concursoService.concursos = [];
-    this.concursoService.getConcursoList().subscribe((res) => {
 
+    this.concursoService.getConcursoList().subscribe((res) => {
       this.concursoService.concursos = res as Concurso[];
-      console.log(res);
     });
-    
+  }
+  
+  refreshProyectoList(){
+    this.proyectoService.proyectos = [];
+
+    this.proyectoService.getProyectoList().subscribe((res) => {
+      this.proyectoService.proyectos = res as Proyecto[];
+    });
   }
 
   agregarConcurso(){

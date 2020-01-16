@@ -1,25 +1,50 @@
-<div class="col-md-12">
+<nav class="navbar navbar-default navbar-fixed">
+    <div class="container-fluid">  
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                   <a class="mx-2" routerLink="/admisibilidad">
+                       <p>Adminisibilidad</p>
+                    </a>
+                </li>
+                <li>
+                   <a style="margin-left: 100px;" routerLink="/evaluacion">
+                       <p>Evaluación 1</p>
+                    </a>
+                </li>
+                <li>
+                    <a style="margin-left: 100px;" routerLink="/notificacion">
+                        <p>Notificación 1</p>
+                     </a>
+                 </li>
+                 <li>
+                    <a style="margin-left: 100px;" routerLink="/eventos">
+                        <p>Eventos</p>
+                     </a>
+                 </li>
+                 <li>
+                    <a style="margin-left: 100px;" routerLink="/evaluacion">
+                        <p>Evaluación 2</p>
+                     </a>
+                 </li>
+                 <li>
+                    <a style="margin-left: 100px;" routerLink="/notificacion">
+                        <p>Notificación 2</p>
+                     </a>
+                 </li>
+                <li class="separator hidden-lg"></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div style="margin-top: 20px;" class="col-md-12">
+        
         <div class="card ">
             <div class="header">
             <div class="row">
               <div class="col-lg-6">
-                <h1 class="title">Etapas</h1>
-                <p class="category">Etapas desenlazadas en el proceso de selección en un concurso.</p>  
-              </div>
-              <div class="col-lg-6">
-                <button class="dropdown pull-right">
-                  <a href="#" class="dropdown-toggle nounderline" data-toggle="dropdown">
-                        <p>
-                            Grupos
-                            <b class="caret"></b>
-                        </p>
-     
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Grupo 1</a></li>
-                    <li><a href="#">Grupo 2</a></li>
-                  </ul>
-                </button>
+                <h1 class="title">Eventos</h1>
+                <p style="margin-top: 10px;" class="category">Eventos en los que participa el proyecto pene.</p>  
               </div>
             </div>
          </div>
@@ -27,51 +52,46 @@
                 <div class="table-full-width">
                     <table class="table">
                         <thead>
-                            <th></th>
+                            <th class="col-lg-1">
+                                <i class="nc-icon nc-check-2"></i>
+                            </th>
                             <th>
                                 Nombre
                             </th>
                             <th>
                                 Fecha
                             </th>
-                            <th></th>
+                            <th>
+                                Descripción
+                            </th>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let evento of eventoService.eventos">
                                 <td>
-                                    <div class="checkbox">
-                                            <input  id="checkbox1" type="checkbox">
+                                    <div class="checkbox col-lg-1">
+                                            <input  id="checkbox1" type="checkbox" value="true">
                                             <label  for="checkbox1"></label>
                                     </div>
                                 </td>
-                                <td>Seminario de emprendimiento</td>
-                                <td>Fecha del evento</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                        <i class="fa fa-times"></i>
-                                    </button>
+                                <td class="col-lg-3">
+                                    <input type="text" #nombre="ngModel" [(ngModel)]="evento.nombre" name="nombre" placeholder="Ingrese nombre del evento" class="form-control" required>
+                                </td>
+                                <td class="col-lg-3">
+                                    <input type="date" #descripcion="ngModel" [(ngModel)]="evento.fecha" name="nombre" placeholder="Ingrese la fecha del evento" class="form-control" required>
+                                </td>
+                                <td class="col-lg-3">
+                                    <input type="text" #fecha="ngModel" [(ngModel)]="evento.descripcion" name="nombre" placeholder="Ingrese la descripción del evento" class="form-control" required>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="footer">
-                    <hr>
-                    <div class="stats">
-                        Footer
+                <hr>
+                    <div >
+                        <button style="margin-right: 5px;" (click)=agregarEvento() class="btn btn-success">Agregar Evento</button>
+                        <button style="margin-right: 5px;" (click)=guardarCambios() class="btn btn-info">Guardar cambios</button>
                     </div>
-                </div>
             </div>
         </div>
 </div>
-<ul>
-    <li *ngFor="let evento of eventos">
-      {{ evento.nombre }}
-      {{ evento.fecha }}
-    </li>
-</ul>
 `
