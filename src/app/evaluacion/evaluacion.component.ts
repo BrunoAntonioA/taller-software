@@ -25,6 +25,15 @@ export class EvaluacionComponent implements OnInit {
   }
 
   evaluar(){
-    
+
+    if(verificarCampos()){
+      //post
+    }
+
   }
+
+  verificarCampos(){
+    return true
+  }
+
 }

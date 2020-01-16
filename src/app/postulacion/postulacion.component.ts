@@ -18,6 +18,7 @@ export class PostulacionComponent implements OnInit {
    
   ngOnInit() {
     this.concursoService.seleccionado = false;
+
   }
 
   selectConcurso(){
@@ -32,8 +33,8 @@ export class PostulacionComponent implements OnInit {
   private fieldArray: Array<any> = [];
   private newAttribute: any = {};
   public files: NgxFileDropEntry[] = [];
-  private nombre_proyecto:String;
-  private director_proyecto:String;
+  public nombreproyecto:String = "";
+  public directorproyecto:String = "";
 
   addFieldValue() {
       this.fieldArray.push(this.newAttribute)
@@ -43,10 +44,64 @@ export class PostulacionComponent implements OnInit {
   deleteFieldValue(index) {
       this.fieldArray.splice(index, 1);
   }
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
 
   postular(){
-    console.log(this.fieldArray);
-    console.log(this.files);
+    let logrado = 1;
+    //verificando largo de nombre del proyecto
+    if(!(this.nombreproyecto.length>0)){
+      alert("Ingrese nombre para el proyecto");
+      logrado = 0;
+    }
+    //verificando largo director de proyecto
+    if(!(this.directorproyecto.length>0)){
+      alert("Ingrese director para el proyecto");
+      logrado = 0;
+    }
+
+    if(!(this.files.length>0)){
+      alert("no ha ingresado archivos")
+      logrado = 0;
+    }
+    
+    for (let field of this.fieldArray){
+
+      if(!(field.nombre.length>0)){
+        alert("el nombre de uno de sus postulantes esta vacio ")
+        logrado = 0;
+      }
+
+      if(!this.validateEmail(field.email)){
+        alert("email no valido");
+        logrado = 0;
+      }
+
+      if(!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( field.rut)){
+        alert("rut no valido");
+        logrado = 0;
+      }
+
+      if(!/^\d+$/.test(field.celular) || field.celular.length!=9){
+        alert("telefono no valido");
+        logrado = 0;
+      }
+      if(!(field.unidad_academica.length>0)){
+        alert("ingrese una unidad academica ")
+        logrado = 0;
+      }
+
+
+    }
+
+    if(logrado == 1){
+      //hacemos el post
+      alert("Logrado iniciando post")
+      
+    }
+
 
 
   }
