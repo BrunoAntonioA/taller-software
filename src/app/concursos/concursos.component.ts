@@ -36,12 +36,13 @@ export class ConcursosComponent implements OnInit {
     this.etapa = n;
   }
 
+
   refreshConcursoList(){
     this.concursoService.concursos = [];
-
     this.concursoService.getConcursoList().subscribe((res) => {
       this.concursoService.concursos = res as Concurso[];
     });
+    this.concursoService.selectedConcurso = new Concurso;
   }
   
   refreshProyectoList(){
@@ -53,12 +54,11 @@ export class ConcursosComponent implements OnInit {
   }
 
   agregarConcurso(){
-    console.log('entra al método select concurso de concursos component');
-    if(this.concursoService.agregar == true){
-      this.concursoService.agregar = false;
-    }else{
-      this.concursoService.agregar = true;
-    }
+    this.concursoService.postConcurso(this.concursoService.selectedConcurso).subscribe((res) => {
+      console.log('agregado satisfactoriamente');
+      this.refreshConcursoList();
+    });
+    
   }
 
   selectProyecto(){
@@ -68,6 +68,10 @@ export class ConcursosComponent implements OnInit {
     }else{
       this.proyectoService.seleccionado = true;
     }
+  }
+
+  activarAgregarConcurso(){
+    this.concursoService.agregar = true;
   }
 
   selectConcurso(){

@@ -8,6 +8,6 @@ export class Proyecto {
     correoJefe: string;
     postulantes: Array<Postulante>;
     archivos: Array<String>;
-    notas1: Array<Number>;
-    notas2: Array<Number>;
+    notas1: Number;
+    notas2: Number;
 }
