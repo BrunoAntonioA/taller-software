@@ -26,13 +26,32 @@ export class EvaluacionComponent implements OnInit {
 
   evaluar(){
 
-    if(verificarCampos()){
+    if(this.verificarCampos()){
       //post
+      alert("is working")
+
     }
 
   }
 
   verificarCampos(){
+    let revisando = true;
+    for(let field of this.fieldArray){
+
+      //revisando  nombre
+      if(!(field.nombre.length>0)){
+        revisando = false
+        alert("El juez "+ field.nombre + " no es valido o esta incompleto")
+      }
+      if(!/^[+-]?\d+(\.\d+)?$/.test(field.nota)){
+        revisando = false
+        alert("La nota "+ field.nota + " no es valida porfavor ingresela en un una escala de 1.0 a 7.0")
+      }
+      return revisando
+
+    }
+
+
     return true
   }
 
