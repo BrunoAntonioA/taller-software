@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-finanzas',
-  templateUrl: './finanzas.component.html',
-  styleUrls: ['./finanzas.component.css']
+  selector: "app-finanzas",
+  templateUrl: "./finanzas.component.html",
+  styleUrls: ["./finanzas.component.css"]
 })
 export class FinanzasComponent implements OnInit {
+  constructor() {}
 
-  constructor(private hola: string) { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
