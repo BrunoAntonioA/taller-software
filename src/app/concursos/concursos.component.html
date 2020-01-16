@@ -1,5 +1,4 @@
-<div class="row">
-
+<div>
     <div *ngIf="this.etapa == 0">
         <div *ngIf="this.concursoService.seleccionado; else seleccionadoActivo" class="col-md-12">
             <nav class="navbar navbar-default navbar-fixed">
@@ -73,47 +72,45 @@
                         </table>
                 </div>
                 <ng-template #tablaProyecto>
-                    <nav class="navbar navbar-default navbar-fixed">
-                        <div class="container-fluid">
-                            
-                            <div class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav">
-                                    <li>
-                                    <a class="mx-2" (click)="changeEtapa(1)">
-                                        <p>Adminisibilidad</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a style="margin-left: 100px;" (click)="changeEtapa(2)">
-                                            <p>Evaluación 1</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a style="margin-left: 100px;" (click)="changeEtapa(3)">
-                                            <p>Notificación 1</p>
-                                        </a>
-                                    </li>
-                                    
-                                    <li>
-                                        <a style="margin-left: 100px;" (click)="changeEtapa(4)">
-                                            <p>Eventos</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a style="margin-left: 100px;" (click)="changeEtapa(2)">
-                                            <p>Evaluación 2</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a style="margin-left: 100px;" (click)="changeEtapa(3)">
-                                            <p>Notificación 2</p>
-                                        </a>
-                                    </li>
-                                    <li class="separator hidden-lg"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
+                        <nav class="navbar navbar-default navbar-fixed">
+                                <div class="container-fluid">  
+                                    <div class="collapse navbar-collapse">
+                                        <ul class="nav navbar-nav">
+                                            <li>
+                                               <a class="mx-2" routerLink="/admisibilidad">
+                                                   <p>Adminisibilidad</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                               <a style="margin-left: 100px;" routerLink="/evaluacion">
+                                                   <p>Evaluación 1</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a style="margin-left: 100px;" routerLink="/notificacion">
+                                                    <p>Notificación 1</p>
+                                                 </a>
+                                             </li>
+                                             <li>
+                                                <a style="margin-left: 100px;" routerLink="/eventos">
+                                                    <p>Eventos</p>
+                                                 </a>
+                                             </li>
+                                             <li>
+                                                <a style="margin-left: 100px;" routerLink="/evaluacion">
+                                                    <p>Evaluación 2</p>
+                                                 </a>
+                                             </li>
+                                             <li>
+                                                <a style="margin-left: 100px;" routerLink="/notificacion">
+                                                    <p>Notificación 2</p>
+                                                 </a>
+                                             </li>
+                                            <li class="separator hidden-lg"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
                     <app-tabla-proyecto></app-tabla-proyecto>
                 </ng-template>
     </ng-template>
