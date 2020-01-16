@@ -3,11 +3,14 @@ import { Postulante } from '../postulante/postulante.model';
 export class Proyecto {
     _id: string;
     nombre: string;
-    fecha_inscripcion: Date;
+    concurso_id: string;
+    email: string;
     nombreJefe: string;
-    correoJefe: string;
-    postulantes: Array<Postulante>;
-    archivos: Array<String>;
     nota1: Number;
     nota2: Number;
+    unidadAcademica: string;
+    etapa: number;
+    fecha_inscripcion: Date;
+    postulantes: Array<Postulante>;
+    archivos: Array<String>;
 }

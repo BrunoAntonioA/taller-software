@@ -21,8 +21,8 @@ export class PostulanteService {
   postulantes: Postulante[];
   proyecto: any;
 
-  readonly baseURL = 'http://190.101.185.129:3000/postulante';
-  readonly proyectoBaseURL = 'http://190.101.185.129:3000/proyecto';
+  readonly baseURL = 'http://localhost:3000/postulante';
+  
   constructor(private http : HttpClient) { 
   }
 
@@ -46,9 +46,7 @@ export class PostulanteService {
   deletePostulante(_id: string) {
     return this.http.delete(this.baseURL + `/${_id}`);
   }
-  postProyecto(proyecto : any){
-    return this.http.post(this.proyectoBaseURL, proyecto);
-  }
+  
 
 
 }

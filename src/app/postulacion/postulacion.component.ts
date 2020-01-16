@@ -101,15 +101,14 @@ export class PostulacionComponent implements OnInit {
     if(logrado == 1){
       //hacemos el post
       let proyecto: any= {};
-      proyecto.nombre_proyecto = this.nombreproyecto;
-      proyecto.nombre_jefe_proyecto = this.directorproyecto;
-      proyecto.email_jefe = this.email_jefe;
+      proyecto.nombre = this.nombreproyecto;
+      proyecto.nombreJefe = this.directorproyecto;
+      proyecto.email = this.email_jefe;
       proyecto.postulantes = this.fieldArray;
-      this.postulanteService.postProyecto(proyecto).subscribe((res) => {
-        console.log(res)
+      this.proyectoService.postProyecto(proyecto).subscribe((res) => {
+        alert("Logrado")
+        console.log('subido');
       });
-
-      alert("Logrado")
     }
 
 
